@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="msapplication-TileColor" content="#000">
+    <meta name="theme-color" content="black">
+    <title>
+      {% block title %}
+        {{ title }}
+      {% endblock %}
+    </title>
+  </head>
+  <body>
+    <header>
+      {% include 'includes/header.html' %}
+    </header>
+    <main>
+      <div class="container">
+        <br>
+        <h1>
+          {% block header %}
+            {{ header }}
+          {% endblock %}
+        </h1>
+        <br>
+        {% block content %}
+          Произошла ошибка загрузки контента страницы
+        {% endblock %}
+      </div>
+    </main>
+    <footer>
+      {% include 'includes/footer.html' %} 
+    </footer>
+  </body>
+</html> 
