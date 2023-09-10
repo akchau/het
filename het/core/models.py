@@ -1,0 +1,3 @@
+CURRENCY = [
+    ("RUB", "RUB")
+]
