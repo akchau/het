@@ -1,0 +1,32 @@
+{% if form.errors %}
+  {% for field in form %}
+    {% for error in field.errors %}
+      {{ error|escape }}
+    {% endfor %}
+  {% endfor %}
+  {% for error in form.non_field_errors %}
+    {{ error|escape }}
+  {% endfor %}
+{% endif %}
+{% block form %}
+{% endblock %}
+<ul>
+  {% for field in form %}
+    <li>
+      <label for="{{ field.id_for_label }}">
+        {{ field.label }}
+        {% if field.field.required %}
+          <span>*</span>
+        {% endif %}
+      </label>
+      {{ field }}
+      {% if field.help_text %}
+        <small id="{{ field.id_for_label }}-help">
+          {{ field.help_text|safe }}
+        </small>
+      {% endif %}
+    </li>
+  {% endfor %}
+</ul>
+  <button type="submit" >Добавить</button>
+</form>

@@ -1,0 +1,15 @@
+<p>
+  {% include 'includes/paginator.html' %}
+</p>
+<p>
+  <table>
+    <tr>
+      {% include "expenses/includes/categories_list_table/includes/table_headers.html" %}
+    </tr>
+    {% for category in page_obj %}
+      <tr>
+        {% include "expenses/includes/categories_list_table/includes/category_list_record.html" %}
+      </tr>
+    {% endfor %}
+  </table>
+</p>
