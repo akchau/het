@@ -1,5 +1,0 @@
-{% extends 'includes/form.html' %}
-{% block form %}
-  <h3>Новая категория</h3>
-  <form method="post" action="{% url 'expenses:new_category' %}" enctype="multipart/form-data">{% csrf_token %}
-{% endblock %}

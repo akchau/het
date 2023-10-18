@@ -1,0 +1,22 @@
+<!--Ячейка которая является заголовком в таблице-->
+
+      {% include 'core/tables/paginator.html' %}
+        <table>
+          {% if page_obj %}
+            <tr>
+              {% block title_cells %}
+              {% endblock %}
+              <td><b>Действия</b></td>
+            </tr>
+            {% for obj in page_obj %}
+              <tr>
+                {% block cells %}
+                {% endblock %}
+                <td>
+                  {% block actions %}
+                  {% endblock %}
+                </td>
+              </tr>
+            {% endfor %}
+          {% endif %}
+        </table>

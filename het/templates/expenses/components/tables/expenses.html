@@ -1,0 +1,14 @@
+{% extends 'core/tables/table.html' %}
+{% block title_cells %}
+  {% include "expenses/components/tables/components/expense/title_components/category.html" %}
+  {% include "expenses/components/tables/components/expense/title_components/expense.html" %}
+  {% include "expenses/components/tables/components/expense/title_components/pub_date.html" %}
+{% endblock %}
+{% block cells %}
+  {% include "expenses/components/tables/components/expense/record_components/category.html" %}
+  {% include "expenses/components/tables/components/expense/record_components/expense.html" %}
+  {% include "expenses/components/tables/components/expense/record_components/pub_date.html" %}
+{% endblock %}
+{% block actions %}
+  {% include "expenses/components/tables/components/expense/record_components/actions.html" %}
+{% endblock %}

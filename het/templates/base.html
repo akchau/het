@@ -1,19 +1,17 @@
 <!DOCTYPE html>
 <html lang="ru">
-  {% include 'includes/head.html' %}
+  {% include 'core/head.html' %}
   <body>
-    {% include 'includes/header.html' %}
+    {% include 'core/main_menu.html' %} 
     <main>
-      <br>
-      {% include 'includes/page_header.html' %}
-      <br>
-        {% block content %}
-          Произошла ошибка загрузки контента страницы
-        {% endblock %}
-      </div>
+      {% include 'core/page_header.html' %}
+      {% block list %}
+      {% endblock %}
+      {% block form %}
+      {% endblock %}
     </main>
     <footer>
-      {% include 'includes/footer.html' %} 
+      {% include 'core/footer.html' %} 
     </footer>
   </body>
 </html> 

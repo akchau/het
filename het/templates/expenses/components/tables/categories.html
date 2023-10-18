@@ -1,0 +1,10 @@
+{% extends 'core/tables/table.html' %}
+{% block title_cells %}
+  {% include "expenses/components/tables/components/category/title_components/name.html" %}
+{% endblock %}
+{% block cells %}
+  {% include "expenses/components/tables/components/category/record_components/name.html" %}
+{% endblock %}
+{% block actions %}
+  {% include "expenses/components/tables/components/category/record_components/actions.html" %}
+{% endblock %}

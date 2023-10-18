@@ -12,12 +12,4 @@ class ExpenseForm(forms.ModelForm):
             "sum_of_expense",
             "comment",
         )
-
-
-class ExpenseCategoryForm(forms.ModelForm):
-    """Форма для создания категории расхода."""
-    class Meta:
-        model = ExpenseCategory
-        fields = (
-            "name",
-        )
+        redirect_name = "expenses:list"
