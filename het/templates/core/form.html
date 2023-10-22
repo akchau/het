@@ -11,6 +11,10 @@
 {% block form %}
 {% endblock %}
 <!--шаблон для отображения ошибок формы-->
+<div class="jumbotron">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-7 col-md-11 col-xs-6">
 <ul>
   {% for field in form %}
     <li>
@@ -29,6 +33,10 @@
     </li>
   {% endfor %}
 </ul>
+    </div>
+    </div>
+  </div>
+</div>
   <button type="submit" >Добавить</button>
 </form>
 <!--шаблон для создания формы,перебирает все поля и выводит метку;кнопка для отправки фопмы-->
