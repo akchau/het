@@ -1,22 +1,24 @@
 <!--Ячейка которая является заголовком в таблице-->
 
       {% include 'core/tables/paginator.html' %}
-        <table>
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover">
           {% if page_obj %}
             <tr>
               {% block title_cells %}
               {% endblock %}
-              <td><b>Действия</b></td>
+              <th scope="col"><b>Действия</b></th>
             </tr>
             {% for obj in page_obj %}
               <tr>
                 {% block cells %}
                 {% endblock %}
-                <td>
+                <th scope="col">
                   {% block actions %}
                   {% endblock %}
-                </td>
+                </th>
               </tr>
             {% endfor %}
           {% endif %}
         </table>
+      </div>
