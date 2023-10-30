@@ -28,8 +28,8 @@
             {% if request.resolver_match.view_name  == "users:account" %}
               active
             {% endif %}"
-            href="{% url "users:account" pk=user_pk %}">
-            <span class="sr-only">{{username}}</span></a>
+            href="{% url "users:account" pk=user.pk %}">
+            <span class="sr-only">{{user.username}}</span></a>
           </li>
         {% else %}
           <li class="nav-item">   
