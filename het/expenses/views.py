@@ -7,6 +7,7 @@ PAGE = "expenses/pages/expenses.html"
 MODEL = Expense
 FORM = ExpenseForm
 
+
 @login_required
 def list(request):
     """
@@ -28,6 +29,7 @@ def list(request):
         context=context
     )
 
+
 @login_required
 def new(request):
     """
@@ -37,6 +39,7 @@ def new(request):
         request=request,
         form_class=FORM
     )
+
 
 @login_required
 def delete(request, pk):

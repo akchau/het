@@ -4,9 +4,11 @@ from core.pagination import get_page_obj
 
 def listing_with_creating(request, template, model, form_class, context):
     """
-    Базовая вью-функция для отображения сущности с формой добавления и пагинатором
+    Базовая вью-функция для отображения сущности с
+    формой добавления и пагинатором
     """
-    records = model.objects.filter(user=request.user.pk).order_by(context["order_by"])
+    records = model.objects.filter(
+        user=request.user.pk).order_by(context["order_by"])
     # Пагинация спсика
     page_obj = get_page_obj(
         request,
