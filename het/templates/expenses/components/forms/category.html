@@ -1,5 +1,7 @@
+
 {% extends 'core/form.html' %}
   {% block form %}
     <form method="post" action="{% url 'expenses_categories:new' %}" enctype="multipart/form-data">{% csrf_token %}
   {% endblock %}
+        
   <!--расширяющий шаблон для передачи данных из формы(категории) на сервер -->
