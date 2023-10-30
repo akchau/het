@@ -1,6 +1,6 @@
 <nav aria-label="Page navigation example">
 {% if page_obj.has_other_pages %} 
-  <ul class="pagination">
+  <ul class="pagination justify-content-center">
     {% if page_obj.has_previous %}
       <li class="page-item"><a class="page-link" href="?page=1">Первая</a></li>
       <li class="page-item">
@@ -29,7 +29,7 @@
       </li>
       <li class="page-item">
         <a class="page-link" aria-label="Previous" href="?page={{ page_obj.paginator.num_pages }}">
-          <span aria-hidden="true">&laquo;</span>
+          <span aria-hidden="true">&raquo;</span>
           <span class="sr-only"></span>
         </a>
       </li>
