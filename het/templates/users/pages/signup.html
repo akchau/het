@@ -1,5 +1,12 @@
-<form method="post" action="{% url 'users:signup' %}">
+
+
+{% extends 'base.html' %}
+<!-- <form method="post" action="{% url 'users:signup' %}">
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="Зарегистрироваться">
-</form>
+</form> -->
+
+{% block form %}
+  {% include "users/components/forms/signup.html" %}
+{% endblock %}
