@@ -9,6 +9,12 @@
         <li class="nav-item">
           <a class="nav-link" href="{% url "expenses_categories:list" %}">Категории расходов<span class="sr-only"></span></a>
         </li>
+        <li class="nav-item">   
+          <a class="nav-link" href="{% url "users:logout" %}">Выйти<span class="sr-only"></span></a>
+        </li>
+        <li class="nav-item">   
+          <a class="nav-link" href="{% url "users:account" pk=user_pk %}">{{username}}<span class="sr-only"></span></a>
+        </li>
       </ul>
    </nav>
 </header>

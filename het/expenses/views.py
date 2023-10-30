@@ -1,13 +1,13 @@
 from core import views as core_views
 from .forms import ExpenseForm
 from .models import Expense
-
+from django.contrib.auth.decorators import login_required
 
 PAGE = "expenses/pages/expenses.html"
 MODEL = Expense
 FORM = ExpenseForm
 
-
+@login_required
 def list(request):
     """
     Список с формой доабвления новой записи.
@@ -28,6 +28,7 @@ def list(request):
         context=context
     )
 
+@login_required
 def new(request):
     """
     Создание записи.
@@ -37,6 +38,7 @@ def new(request):
         form_class=FORM
     )
 
+@login_required
 def delete(request, pk):
     """
     Удаление записи.

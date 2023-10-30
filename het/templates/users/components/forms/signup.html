@@ -1,0 +1,4 @@
+{% extends 'core/form.html' %}
+  {% block form %}
+    <form method="post" action="{% url 'users:signup' %}" enctype="multipart/form-data">{% csrf_token %}
+  {% endblock %}

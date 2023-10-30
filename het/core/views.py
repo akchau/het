@@ -19,6 +19,8 @@ def listing_with_creating(request, template, model, form_class, context):
         files=request.FILES or None,
     )
     context = {
+        "username": request.user.username,
+        "user_pk": request.user.pk,
         "title": context["verbose_title"],
         "header": context["verbose_title"],
         "page_obj": page_obj,

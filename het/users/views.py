@@ -1,13 +1,22 @@
 from django.shortcuts import render
+from django.urls import reverse_lazy
+from .forms import CreationForm
+from django.views.generic import CreateView
 
-# Create your views here.
-def account(request):
-    """Главная страница. Включено кеширование"""
-    template = "users/account.html"
-    username = "albert"
+
+class SignUp(CreateView):
+    form_class = CreationForm
+    # После успешной регистрации перенаправляем пользователя на главную.
+    success_url = reverse_lazy('users:login')
+    template_name = 'users/pages/signup.html'
+
+
+def account(request, pk):
+    template = 'users/pages/account.html'
     context = {
-        "title": "Аккаунт пользователя",
-        "username": username,
-        "header": "Аккаунт пользователя"
+        "user_pk": request.user.pk,
+        "username": request.user.username,
+        "title": request.user.username,
+        "header": request.user.username,
     }
     return render(request, template, context)

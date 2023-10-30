@@ -1,6 +1,7 @@
 from core import views as core_views
 from .forms import ExpenseCategoryForm
 from .models import ExpenseCategory
+from django.contrib.auth.decorators import login_required
 
 
 PAGE = "expenses/pages/categories.html"
@@ -8,6 +9,7 @@ MODEL = ExpenseCategory
 FORM = ExpenseCategoryForm
 
 
+@login_required
 def list(request):
     """
     Список категорий.
@@ -28,6 +30,7 @@ def list(request):
     )
 
 
+@login_required
 def new(request):
     """
     Создание категории.
@@ -38,6 +41,7 @@ def new(request):
     )
 
 
+@login_required
 def delete(request, pk):
     """
     Удаление категории.
