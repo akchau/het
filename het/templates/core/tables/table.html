@@ -2,9 +2,9 @@
 
       {% include 'core/tables/paginator.html' %}
       <div class="table-responsive">
-        <table class="table table-bordered table-hover">
+        <table class="table table-borderless table-hover table-striped table-sm">
           {% if page_obj %}
-            <tr>
+            <tr class="table-dark">
               {% block title_cells %}
               {% endblock %}
               <th scope="col">Действия</th>
@@ -13,10 +13,10 @@
               <tr>
                 {% block cells %}
                 {% endblock %}
-                <th scope="col">
+                <td scope="row">
                   {% block actions %}
                   {% endblock %}
-                </th>
+                </td>
               </tr>
             {% endfor %}
           {% endif %}
