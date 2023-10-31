@@ -11,13 +11,9 @@
 {% block form %}
 {% endblock %}
 <!--шаблон для отображения ошибок формы-->
-<div class="jumbotron">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-7 col-md-11 col-xs-6">
-<ul>
+<div class="col-md">
+  <div class="card">
   {% for field in form %}
-    <li>
       <label for="{{ field.id_for_label }}">
         {{ field.label }}
         {% if field.field.required %}
@@ -30,13 +26,8 @@
           {{ field.help_text|safe }}
         </small>
       {% endif %}
-    </li>
   {% endfor %}
-</ul>
-    </div>
-    </div>
+  <button type="submit" class="btn btn-outline-info" >Добавить</button>
   </div>
 </div>
-  <button type="button" class="btn btn-outline-info" >Добавить</button>
-</form>
 <!--шаблон для создания формы,перебирает все поля и выводит метку;кнопка для отправки фопмы-->
