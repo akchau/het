@@ -7,13 +7,17 @@
     </div>
     <main>
       <div class="container" style="margin-top: 70px;">
-      {% include 'core/page_header.html' %}
-      {% block list %}
-      {% endblock %}
-      {% block content %}
-      {% endblock %}
-      {% block form %}
-      {% endblock %}
+        <div class="row">    
+        {% include 'core/page_header.html' %}
+          <div class="col-lg-8 col-md-8">
+          {% block list %}
+          {% endblock %}
+          </div>
+            <div class="col-lg-4 col-md-4">
+            {% block form %}
+            {% endblock %}
+            </div>    
+        </div>
       </div>
     </main>
     <footer>
