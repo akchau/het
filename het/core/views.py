@@ -34,7 +34,7 @@ def listing_with_creating(request, template, model, form_class, context):
 
 def add_with_set_user(request, form_class):
     """Создание сущности."""
-    form = form_class(request.POST)
+    form = form_class(request.POST, user=request.user)
     if form.is_valid():
         new_object = form.save(commit=False)
         new_object.user = request.user
