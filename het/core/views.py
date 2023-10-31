@@ -15,10 +15,12 @@ def listing_with_creating(request, template, model, form_class, context):
         records,
         context["num_record_in_page"]
     )
+    # kwargs = {'user': request.user}
     # Форма добавления новой записи
     new_form = form_class(
         request.POST or None,
         files=request.FILES or None,
+        user=request.user
     )
     context = {
         "title": context["verbose_title"],
