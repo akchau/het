@@ -12,7 +12,9 @@ class ExpenseCategoryForm(forms.ModelForm):
         redirect_name = "expenses_categories:list"
 
     def __init__(self, *args, **kwargs):
-        self.user = kwargs.pop('user')
+        self.user = kwargs.get('user')
+        if self.user:
+            kwargs.pop("user")
         super(ExpenseCategoryForm, self).__init__(*args, **kwargs)
 
 
