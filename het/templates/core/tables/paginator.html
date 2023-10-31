@@ -2,10 +2,12 @@
 {% if page_obj.has_other_pages %} 
   <ul class="pagination justify-content-center">
     {% if page_obj.has_previous %}
-      <li class="page-item"><a class="page-link" href="?page=1">Первая</a></li>
+      <li class="page-item"><a class="page-link" aria-label="Next" href="?page=1"><span aria-hidden="true">&laquo;</span>
+        <span class="sr-only"></span></a></li>
       <li class="page-item">
-        <a class="page-link" href="?page={{ page_obj.previous_page_number }}">
-          Предыдущая
+        <a class="page-link" aria-label="Previous" href="?page={{ page_obj.previous_page_number }}">
+          <span aria-hidden="true">&raquo;</span>
+          <span class="sr-only"></span>
         </a>
       </li>
     {% endif %}
