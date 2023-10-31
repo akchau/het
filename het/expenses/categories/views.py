@@ -17,7 +17,7 @@ def list(request):
     context = {
         "verbose_title": "Мои категории расходов",
         "verbose_action": "Добавьте категорию расходов",
-        "num_record_in_page": 5,
+        "num_record_in_page": 14,
         "order_by": "name",
     }
 
