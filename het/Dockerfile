@@ -1,4 +1,4 @@
-FROM python:3.10
+FROM python:3.10-slim
 
 # Запустить команду создания директории внутри контейнера
 RUN mkdir /app
