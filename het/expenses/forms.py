@@ -18,6 +18,6 @@ class ExpenseForm(forms.ModelForm):
         self.user = kwargs.get('user')
         if self.user:
             kwargs.pop("user")
-        print(self.user) # эту строку можно заменить на `user = kwargs.get('user')`, если user не всегда передается в kwargs
         super(ExpenseForm, self).__init__(*args, **kwargs)
-        self.fields['category'].queryset = ExpenseCategory.objects.filter(user=self.user)
+        self.fields['category'].queryset = ExpenseCategory.objects.filter(
+            user=self.user)

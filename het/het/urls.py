@@ -22,7 +22,6 @@ from . import views
 urlpatterns = [
     path('', views.main, name="main"),
     path('auth/', include('users.urls', namespace="users")),
-    # path('auth/', include('django.contrib.auth.urls')),
     path('expenses/', include('expenses.urls', namespace="expenses")),
     path(
         'expenses/categories/',

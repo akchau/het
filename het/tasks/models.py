@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 
-from core.models import ItemModel
 
 User = get_user_model()
 
@@ -39,7 +38,7 @@ class Task(models.Model):
     date = models.DateField(
         "Дата задачи"
     )
-    
+
     @property
     def next_data(self):
         return self.date + self.regularity

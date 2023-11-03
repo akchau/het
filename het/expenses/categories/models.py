@@ -5,6 +5,7 @@ from core.models import ItemModel
 
 User = get_user_model()
 
+
 class ExpenseCategory(ItemModel):
     """
     Модель категории.

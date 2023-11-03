@@ -15,4 +15,3 @@ def done(request, pk: Task.pk):
     )
     new_task.save()
     task.save()
-

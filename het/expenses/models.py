@@ -6,6 +6,7 @@ from expenses.categories.models import ExpenseCategory
 
 User = get_user_model()
 
+
 class Expense(TransactionItemModel):
     """
     Модель расхода.
