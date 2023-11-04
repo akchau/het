@@ -10,7 +10,6 @@ class ExpenseForm(forms.ModelForm):
             "category",
             "currency",
             "sum_of_expense",
-            "comment",
         )
         redirect_name = "expenses:list"
 
@@ -19,5 +18,25 @@ class ExpenseForm(forms.ModelForm):
         if self.user:
             kwargs.pop("user")
         super(ExpenseForm, self).__init__(*args, **kwargs)
+        self.fields['category'].queryset = ExpenseCategory.objects.filter(
+            user=self.user)
+
+
+class ExpenseEditForm(forms.ModelForm):
+    """Форма для создания и редактирования траты"""
+    class Meta:
+        model = Expense
+        fields = (
+            "category",
+            "sum_of_expense",
+            "pub_date",
+        )
+        redirect_name = "expenses:list"
+
+    def __init__(self, *args, **kwargs):
+        self.user = kwargs.get('user')
+        if self.user:
+            kwargs.pop("user")
+        super(ExpenseEditForm, self).__init__(*args, **kwargs)
         self.fields['category'].queryset = ExpenseCategory.objects.filter(
             user=self.user)

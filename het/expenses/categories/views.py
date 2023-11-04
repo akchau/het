@@ -1,5 +1,5 @@
 from core import views as core_views
-from .forms import ExpenseCategoryForm
+from .forms import ExpenseCategoryForm, ExpenseCategoryEditForm
 from .models import ExpenseCategory
 from django.contrib.auth.decorators import login_required
 
@@ -7,10 +7,11 @@ from django.contrib.auth.decorators import login_required
 PAGE = "expenses/pages/categories.html"
 MODEL = ExpenseCategory
 FORM = ExpenseCategoryForm
+EDIT_FORM = ExpenseCategoryEditForm
 
 
 @login_required
-def list(request):
+def list(request, edit: bool = False, edit_pk: int = None):
     """
     Список категорий.
     """
@@ -19,6 +20,8 @@ def list(request):
         "verbose_action": "Добавьте категорию расходов",
         "num_record_in_page": 14,
         "order_by": "name",
+        "edit_mode": edit,
+        "edit_pk": edit_pk,
     }
 
     return core_views.listing_with_creating(
@@ -26,7 +29,8 @@ def list(request):
         context=context,
         template=PAGE,
         model=MODEL,
-        form_class=FORM
+        form_class=FORM,
+        edit_form_class=EDIT_FORM
     )
 
 

@@ -1,3 +1,4 @@
+from django.utils import timezone
 from django.db import models
 
 CURRENCY = [
@@ -32,7 +33,8 @@ class TransactionItemModel(ItemModel):
 
     pub_date = models.DateTimeField(
         "Время занесения",
-        auto_now_add=True,
+        default=timezone.now,
+        editable=True
     )
 
     comment = models.TextField(

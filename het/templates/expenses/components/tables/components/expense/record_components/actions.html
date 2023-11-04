@@ -1,2 +1,10 @@
-  <a href={% url 'expenses:delete' obj.pk %}>Удалить</a>
+  {% if edit_mode %}
+    {% if obj.pk == edit_pk%}
+      <a href="{% url 'expenses:edit' obj.pk %}">Сохранить</a>
+    {% endif %}
+  {% else %}
+    <a href={% url 'expenses:delete' obj.pk %}>Удалить</a>
+    <a href="{% url 'expenses:list'%}?edit_pk={{ obj.pk }}&edit_mode=True">Ред.</a>
+  {% endif %}
+
            
