@@ -1,4 +1,12 @@
 {% extends "core/tables/cell.html" %}
-{% block value%}
+{% block value %}
+{% if edit_mode and obj.pk == edit_pk %}
+  {% with edit_form.pub_date as field %}
+    <div class="form-group">
+      {{ field.label_tag }} {{ field }}
+    </div>
+  {% endwith %}
+{% else %}
   {{ obj.pub_date }}
+{% endif %}
 {% endblock %}

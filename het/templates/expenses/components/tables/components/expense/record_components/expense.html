@@ -1,4 +1,23 @@
 {% extends "core/tables/cell.html" %}
 {% block value%}
-  {{ obj.sum_of_expense }}[{{ obj.currency }}]
+{% if edit_mode and obj.pk == edit_pk %}
+  {% with edit_form.sum_of_expense as field %}
+    <div class="form-group">
+      {{ field.label_tag }} {{ field }}
+      {% if obj.currency == "RUB"  %}
+      ₽
+      {% else %}
+      {{ obj.currency }}
+      {% endif %}
+    </div>
+    {% endwith %}
+
+{% else %}
+  {{ obj.sum_of_expense }} 
+  {% if obj.currency == "RUB" %}
+  ₽
+  {% else %}
+  {{ obj.currency }}
+  {% endif %}
+{% endif %}
 {% endblock %}

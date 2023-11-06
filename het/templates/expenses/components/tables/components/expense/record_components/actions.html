@@ -1,8 +1,10 @@
-  {% if edit_mode and obj.pk == edit_pk%}
-      <a href="{% url 'expenses:edit' obj.pk %}">Сохранить</a>
+{% extends "core/tables/cell_action.html" %}
+{% block value %}
+  {% if edit_mode and obj.pk == edit_pk %}
+    <button type="submit" class="btn btn-outline-primary" >Сохранить</button>
   {% else %}
-    <a href={% url 'expenses:delete' obj.pk %}>Удалить</a>
-    <a href="{% url 'expenses:list'%}?edit_pk={{ obj.pk }}&edit_mode=True">Ред.</a>
+    <a href={% url "expenses:delete" obj.pk %} class="btn btn-outline-danger">Удалить</a>
+    <a href="{% url 'expenses:list'%}?edit_pk={{ obj.pk }}&edit_mode=True" class="btn btn-outline-primary">Ред.</a>
   {% endif %}
-
+{% endblock %}
            

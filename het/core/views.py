@@ -1,5 +1,6 @@
 from django import forms
 from django.db import models
+from django.http import HttpResponseBadRequest
 from django.shortcuts import get_object_or_404, redirect, render
 from core.pagination import get_page_obj
 
@@ -68,15 +69,16 @@ def detete_obj(request, pk, model, redirect_name):
     return redirect(redirect_name)
 
 
-def edit_obj(request, form_class: forms.ModelForm):
+def edit_obj(request, pk: int, form_class: forms.ModelForm):
+    edit_model = form_class.Meta.model
+    object_instance = get_object_or_404(edit_model, pk=pk)
     form = form_class(
         request.POST,
-        user=request.user
+        user=request.user,
+        instance=object_instance,
     )
     if form.is_valid():
         new_object = form.save(commit=False)
         new_object.user = request.user
         form.save(commit=True)
-        form.save()
-        return redirect(form_class.Meta.redirect_name)
-    raise ValueError('Невалидная форма')
+    return redirect(form_class.Meta.redirect_name)

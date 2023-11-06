@@ -1,5 +1,12 @@
-
 {% extends "core/tables/cell.html" %}
 {% block value%}
+{% if edit_mode and obj.pk == edit_pk %}
+  {% with edit_form.category as field %}
+    <div class="form-group">
+      {{ field.label_tag }} {{ field }}
+    </div>
+  {% endwith %}
+{% else %}
   {{ obj.category }}
+{% endif %}
 {% endblock %}

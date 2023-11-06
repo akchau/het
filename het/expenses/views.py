@@ -67,5 +67,5 @@ def delete(request, pk):
 
 
 @login_required
-def edit(request, pk):
-    core_views.edit_obj(request=request, form_class=FORM, pk=pk)
+def edit(request, pk: int):
+    return core_views.edit_obj(request=request, pk=pk, form_class=EDIT_FORM)
