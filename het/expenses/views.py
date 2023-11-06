@@ -54,7 +54,7 @@ def new(request):
 
 
 @login_required
-def delete(request, pk):
+def delete(request, pk: int):
     """
     Удаление записи.
     """
