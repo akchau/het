@@ -1,8 +1,10 @@
 from django import forms
 from django.db import models
-from django.http import HttpResponseBadRequest
+from django.db.models import Sum
 from django.shortcuts import get_object_or_404, redirect, render
 from core.pagination import get_page_obj
+from expenses.models import Expense
+
 
 
 def listing_with_creating(request, template: str,
@@ -13,6 +15,9 @@ def listing_with_creating(request, template: str,
     Базовая вью-функция для отображения сущности с
     формой добавления и пагинатором
     """
+    my_balance = Expense.objects.filter(user=request.user).aggregate(Sum('sum_of_expense'))['sum_of_expense__sum']
+    if my_balance is None:
+        my_balance = 0
     records = model.objects.filter(
         user=request.user.pk).order_by(context["order_by"])
     # Пагинация спсика
@@ -50,7 +55,8 @@ def listing_with_creating(request, template: str,
         "edit_mode": context["edit_mode"],
         "edit_pk": context["edit_pk"],
         "edit_form": edit_form,
-        "category_filter_form": category_filter_form
+        "category_filter_form": category_filter_form,
+        "my_balance": my_balance
     }
     return render(request, template, context)
 
