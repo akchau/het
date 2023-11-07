@@ -1,3 +1,4 @@
+from django.utils import timezone
 from .models import Expense, ExpenseCategory
 from django import forms
 
@@ -10,6 +11,7 @@ class ExpenseForm(forms.ModelForm):
             "category",
             "currency",
             "sum_of_expense",
+            "pub_date",
         )
         redirect_name = "expenses:list"
 
@@ -20,6 +22,8 @@ class ExpenseForm(forms.ModelForm):
         super(ExpenseForm, self).__init__(*args, **kwargs)
         self.fields['category'].queryset = ExpenseCategory.objects.filter(
             user=self.user)
+        if not self.instance.pk:
+            self.initial['pub_date'] = timezone.now()
 
 
 class ExpenseEditForm(forms.ModelForm):

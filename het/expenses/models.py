@@ -13,11 +13,9 @@ class Expense(TransactionItemModel):
     """
     category = models.ForeignKey(
         ExpenseCategory,
-        on_delete=models.SET_NULL,
+        on_delete=models.CASCADE,
         related_name="expenses",
         verbose_name="Категория",
-        null=True,
-        blank=True,
         help_text="Выберите категорию из списка."
     )
     user = models.ForeignKey(
