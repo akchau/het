@@ -7,7 +7,8 @@ from core.pagination import get_page_obj
 
 def listing_with_creating(request, template: str,
                           model: models.Model, form_class: forms.ModelForm,
-                          context: dict, edit_form_class: forms.ModelForm):
+                          context: dict, edit_form_class: forms.ModelForm,
+                          category_filter_form: forms.ModelForm):
     """
     Базовая вью-функция для отображения сущности с
     формой добавления и пагинатором
@@ -21,14 +22,15 @@ def listing_with_creating(request, template: str,
         context["num_record_in_page"]
     )
 
-    # kwargs = {'user': request.user}
+    # category_filter_form = category_filter_form(
+    #     request.POST or None,
+    #     user=request.user
+    # )
     # Форма добавления новой записи
     new_form = form_class(
         None,
-        files=request.FILES or None,
         user=request.user
     )
-
     edit_form = None
     if context["edit_mode"]:
         edit_model = edit_form_class.Meta.model
@@ -47,7 +49,8 @@ def listing_with_creating(request, template: str,
         "action": context["verbose_action"],
         "edit_mode": context["edit_mode"],
         "edit_pk": context["edit_pk"],
-        "edit_form": edit_form
+        "edit_form": edit_form,
+        "category_filter_form": category_filter_form
     }
     return render(request, template, context)
 

@@ -1,5 +1,5 @@
 from core import views as core_views
-from .forms import ExpenseForm, ExpenseEditForm
+from .forms import CategoryFilterForm, ExpenseForm, ExpenseEditForm
 from .models import Expense
 from django.contrib.auth.decorators import login_required
 
@@ -7,6 +7,7 @@ PAGE = "expenses/pages/expenses.html"
 MODEL = Expense
 FORM = ExpenseForm
 EDIT_FORM = ExpenseEditForm
+CATEGORY_FILTER_FORM = CategoryFilterForm
 
 
 @login_required
@@ -38,7 +39,8 @@ def list(request):
         model=MODEL,
         form_class=FORM,
         context=context,
-        edit_form_class=EDIT_FORM
+        edit_form_class=EDIT_FORM,
+        category_filter_form=CATEGORY_FILTER_FORM
     )
 
 
