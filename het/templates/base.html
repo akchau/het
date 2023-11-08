@@ -8,20 +8,23 @@
     <main>
       <div class="container" style="margin-top: 70px;">
         <div class="row">    
-        {% include 'core/page_header.html' %}
-          <div class="col-lg-8 col-md-8">
-          {% block list %}
-          {% endblock %}
-          </div>
-            <div class="col-lg-4 col-md-4">
-              <div class="form-row">
-            {% block form %}
-            {% endblock %}
-              </div>
-            </div>    
+          {% include 'core/page_header.html' %}
         </div>
-      </div>
-    </main>
+          <div class="container text-center">
+            <div class="row">
+              <div class="col-8">
+              {% block list %}
+              {% endblock %}
+              </div>
+            </div>
+              <div class="row">
+                <div class="col-4">
+                {% block form %}
+                {% endblock %}
+                </div>
+              </div> 
+         </div>
+    </main> 
     <footer>
       {% include 'core/footer.html' %} 
     </footer>
