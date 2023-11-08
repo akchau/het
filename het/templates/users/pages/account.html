@@ -1,5 +1,85 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    Страница моего аккаунта
+<link rel="stylesheet" href="../pages/style_account.css"
+<div class="container">
+  <div class="row profile">
+    <div class="col-md-3">
+      <div class="profile-sidebar">
+
+              <div class="profile-userpic">
+                <img src="../pages/img_pages/user_4847972.png" class="img-responsive" alt="user cap">
+            </div>
+
+            <div class="profile-usertitle">
+                <div class="profile-usertitle-name"> 
+                    ник пользователя
+                </div>
+                <div class="profile-usertitle-status">
+                    статус пользователя
+                </div>
+            </div>
+            <div class="profile-userbuttons">
+                <button type="submit" class="btn btn-success btn-sm">Добавить</button>
+                <button type="submit" class="btn btn-danger btn-sm">Сообщение</button>
+            </div>
+
+            <div class="profile-usermenu">
+                <ul class="nav">
+                    <li class="active">
+                        <a href="#">
+                        <i class="glyphicon glyphicon-home"></i>
+                        Просмотр страницы </a>
+                    </li>
+                    <li>
+                        <a href="№">
+                        <i class="glyphicon glyphicon-user"></i>
+                        Настройки аккаунта </a>
+                    </li>
+                    <li>
+                        <a href="#" target="_blank">
+                        <i class="glyphicon glyphicon-ok"></i>
+                        Бюджеты </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                        <i class="glyphicon glyphicon-flag"></i>
+                        Помощь </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="portlet light bordered">
+                <div class="row list-separated profile-stat">
+                    <div class="col-md-4 col-sm-4 col-xs-6">
+                        <div class="uppercase profile-stat-title"> кол-во бюджетов </div>
+                        <div class="uppercase profile-stat-text"> Бюджеты </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-6">
+                        <div class="uppercase profile-stat-title"> кол-во добавленных</div>
+                        <div class="uppercase profile-stat-text"> Добавленные </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h4 class="profile-desc-title">информация о пользователе</h4>
+                <span class="profile-desc-text">информация </span>
+                <div class="margin-top-20 profile-desc-link">
+                    <i class="fa fa-globe"></i>
+                    <a href="#">email</a>
+                </div>
+            </div>
+
+            <div class="col-md-9">
+              <div class="profile-content">
+              дополнительная информация
+              </div>
+            </div>
+             
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}
+            
