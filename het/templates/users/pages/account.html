@@ -5,15 +5,32 @@
 <link rel="stylesheet" href="{% static 'css/account.css'%}">
 <div class="container rounded bg-white mt-5 mb-5">
   <div class="row">
-    {% if current_section=="personal_data" %}
-    {% include 'users/components/accounts/personal_data.html' %} 
-    {% elif current_section=="email" %}
-    {% include 'users/components/accounts/email.html' %}
-    {% elif current_section=="change_password" %}
-    {% include 'users/components/accounts/change_password.html' %}
-    {% elif current_section=="dropping_password" %}
-    {% include 'users/components/accounts/dropping_password.html' %}
+    <nav class="navbar bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'users:account' %}?current_section=personal_data">Изменить личные данные</a>
+      </div>
+      <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'users:account' %}?current_section=email">Изменить email</a>
+      </div>
+      <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'users:account' %}?current_section=change_password">Изменить пароль</a>
+      </div>
+      <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'users:account' %}?current_section=dropping_password">Сброс пароля</a>
+      </div>
+    </nav>
+    {% if current_section %}
+      {% if current_section == "personal_data" %}
+        {% include 'users/components/accounts/personal_data.html' %} 
+      {% elif current_section == "email" %}
+        {% include 'users/components/accounts/email.html' %}
+      {% elif current_section == "change_password" %}
+        {% include 'users/components/accounts/change_password.html' %}
+      {% elif current_section == "dropping_password" %}
+        {% include 'users/components/accounts/dropping_password.html' %}
+      {% endif %}
     {% endif %}
+    
     <!-- <div class="col-md-3 border-right">
       <div class="d-flex flex-column align-items-center text-center p-3 py-5">
         <img class="rounded-circle mt-5" width="150px" src="{% static 'imgs/user_4847972.png'%}">
@@ -46,8 +63,8 @@
             </div>
             <div class="mt-5 text-center"><button class="btn btn-outline-info" type="submit">Сохранить</button></div>
         </div>
-      </div>
+      </div>-->
   </div>
-</div> -->
+</div>
 {% endblock %}
             

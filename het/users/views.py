@@ -11,12 +11,14 @@ class SignUp(CreateView):
     template_name = 'users/pages/signup.html'
 
 
-def account(request, pk):
+def account(request):
     template = 'users/pages/account.html'
+    current_section = request.GET.get('current_section', 'personal_data')
     context = {
         "user_pk": request.user.pk,
         "username": request.user.username,
         "title": request.user.username,
         "header": request.user.username,
+        "current_section": current_section,
     }
     return render(request, template, context)
