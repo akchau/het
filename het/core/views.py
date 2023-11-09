@@ -20,14 +20,13 @@ def listing_with_creating(request, template: str,
     my_balance = Expense.objects.filter(user=request.user).aggregate(Sum('sum_of_expense'))['sum_of_expense__sum']
     if my_balance is None:
         my_balance = 0
-    if context["filter_category"] is not None:
+    if context.get("filter_category") is not None:
         print(context["filter_category"])
         records = model.objects.filter(
             user=request.user.pk,
             category=context["filter_category"]
         ).order_by(context["order_by"])
     else:
-        print(context["filter_category"])
         records = model.objects.filter(
             user=request.user.pk,
         ).order_by(context["order_by"])
@@ -41,7 +40,7 @@ def listing_with_creating(request, template: str,
     if category_filter_form_class is not None:
         category_filter_form = category_filter_form_class(
             None,
-            user=request.user
+            user=request.user,
         )
     new_form = form_class(
         None,
