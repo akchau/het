@@ -48,9 +48,9 @@ class ExpenseEditForm(forms.ModelForm):
 
 class CategoryFilterForm(forms.ModelForm):
     class Meta:
-        model = ExpenseCategory
+        model = Expense
         fields = (
-            "name",
+            "category",
         )
         redirect_name = "expenses:list"
 
@@ -58,6 +58,6 @@ class CategoryFilterForm(forms.ModelForm):
         self.user = kwargs.get('user')
         if self.user:
             kwargs.pop("user")
-        super(ExpenseEditForm, self).__init__(*args, **kwargs)
+        super(CategoryFilterForm, self).__init__(*args, **kwargs)
         self.fields['category'].queryset = ExpenseCategory.objects.filter(
             user=self.user)
