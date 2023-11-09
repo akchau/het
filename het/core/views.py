@@ -113,7 +113,7 @@ def filter_category_redirect(request, form_class: forms.ModelForm):
         new_object = form.save(commit=False)
         category = new_object.category
         print(category)
-        object = ExpenseCategory.objects.get(name=category)
+        object = form_class.Meta.filter_model.objects.get(name=category)
         base_url = reverse(form_class.Meta.redirect_name)
         query_string = urlencode({'filter_category': object.pk})
         url = '{}?{}'.format(base_url, query_string)

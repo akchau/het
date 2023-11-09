@@ -53,6 +53,7 @@ class CategoryFilterForm(forms.ModelForm):
             "category",
         )
         redirect_name = "expenses:list"
+        filter_model = ExpenseCategory
 
     def __init__(self, *args, **kwargs):
         self.user = kwargs.get('user')
