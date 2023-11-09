@@ -14,15 +14,18 @@ urlpatterns = [
     ),
 
     # Выход
-    path('logout/', views.LogoutView.as_view(
-        template_name='users/pages/logout.html'),
+    path(
+        'logout/',
+        views.LogoutView.as_view(
+            template_name='users/pages/logout.html'),
         name='logout'
     ),
 
     # Смена пароля
     path(
         'password_change/',
-        views.PasswordChangeView.as_view(),
+        views.PasswordChangeView.as_view(
+            template_name='users/pages/password_change.html'),
         name='password_change'
     ),
 
