@@ -4,7 +4,7 @@ from . import views as custom_view
 app_name = "users"
 
 urlpatterns = [
-    path('account/<int:pk>/', custom_view.account, name='account'),
+    path('account/', custom_view.account, name='account'),
     path('signup/', custom_view.SignUp.as_view(), name='signup'),
     # Авторизация
     path(
@@ -48,7 +48,9 @@ urlpatterns = [
     # Сообщение об отправке ссылки для восстановления пароля
     path(
         'password_reset/done/',
-        views.PasswordResetDoneView.as_view(),
+        views.PasswordResetDoneView.as_view(
+            template_name='users/pages/password_reset_sent_link_done.html'
+        ),
         name='password_reset_done'
     ),
 

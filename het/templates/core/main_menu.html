@@ -28,7 +28,7 @@
             {% if request.resolver_match.view_name  == "users:account" %}
               active
             {% endif %}"
-            href="{% url "users:account" pk=user.pk %}">
+            href="{% url "users:account" %}">
             <span class="sr-only">{{user.username}}</span></a>
           </li>
           <form class="form-inline mb-2 mb-ml-2">
