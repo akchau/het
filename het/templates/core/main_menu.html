@@ -31,6 +31,9 @@
             href="{% url "users:account" pk=user.pk %}">
             <span class="sr-only">{{user.username}}</span></a>
           </li>
+          <form class="form-inline mb-2 mb-ml-2">
+            <input class="form-control mb-ml-2" type="search" placeholder="Текущий баланс" aria-label="Текущий баланс">
+          </form>
         {% else %}
           <li class="nav-item">   
             <a class="nav-link" href="{% url "users:login" %}">Войти<span class="sr-only"></span></a>
