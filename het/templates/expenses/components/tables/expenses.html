@@ -1,4 +1,16 @@
 {% extends 'core/tables/table.html' %}
+{% block filters %}
+<h1>Текущий баланс - {{ my_balance }}  ₽</h1>
+<form method="post" action="{% url 'expenses:filter' %}" enctype="multipart/form-data">{% csrf_token %}
+  {% with category_filter_form.category as field %}
+  <div class="form-group">
+    {{ field.label_tag }} {{ field }}
+  </div>
+  {% endwith %}
+  <button type="submit" class="btn btn-outline-primary" >Фильтр</button>
+</form>
+<a href="{% url 'expenses:list' %}" class="btn btn-outline-primary">Сброс<a>
+{% endblock %}
 {% block title_cells %}
   {% include "expenses/components/tables/components/expense/title_components/category.html" %}
   {% include "expenses/components/tables/components/expense/title_components/expense.html" %}

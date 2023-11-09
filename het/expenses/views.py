@@ -1,5 +1,5 @@
 from core import views as core_views
-from .forms import ExpenseForm, ExpenseEditForm
+from .forms import CategoryFilterForm, ExpenseForm, ExpenseEditForm
 from .models import Expense
 from django.contrib.auth.decorators import login_required
 
@@ -7,6 +7,7 @@ PAGE = "expenses/pages/expenses.html"
 MODEL = Expense
 FORM = ExpenseForm
 EDIT_FORM = ExpenseEditForm
+CATEGORY_FILTER_FORM = CategoryFilterForm
 
 
 @login_required
@@ -14,6 +15,7 @@ def list(request):
     """
     Список с формой доабвления новой записи.
     """
+    filter_category = request.GET.get('filter_category', None)
     edit_mode_value = request.GET.get('edit_mode', None)
     edit_mode = True if edit_mode_value == 'True' else None
     edit_pk = None
@@ -30,6 +32,7 @@ def list(request):
         "order_by": "-pub_date",
         "edit_mode": edit_mode,
         "edit_pk": edit_pk,
+        "filter_category": filter_category
     }
 
     return core_views.listing_with_creating(
@@ -38,7 +41,8 @@ def list(request):
         model=MODEL,
         form_class=FORM,
         context=context,
-        edit_form_class=EDIT_FORM
+        edit_form_class=EDIT_FORM,
+        category_filter_form_class=CATEGORY_FILTER_FORM
     )
 
 
@@ -54,7 +58,7 @@ def new(request):
 
 
 @login_required
-def delete(request, pk):
+def delete(request, pk: int):
     """
     Удаление записи.
     """
@@ -69,3 +73,11 @@ def delete(request, pk):
 @login_required
 def edit(request, pk: int):
     return core_views.edit_obj(request=request, pk=pk, form_class=EDIT_FORM)
+
+
+@login_required
+def filter_by_category(request):
+    return core_views.filter_category_redirect(
+        request=request,
+        form_class=CATEGORY_FILTER_FORM
+    )

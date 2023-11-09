@@ -30,7 +30,8 @@ def list(request, edit: bool = False, edit_pk: int = None):
         template=PAGE,
         model=MODEL,
         form_class=FORM,
-        edit_form_class=EDIT_FORM
+        edit_form_class=EDIT_FORM,
+        category_filter_form_class=None
     )
 
 
