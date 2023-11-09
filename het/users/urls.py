@@ -32,7 +32,9 @@ urlpatterns = [
     # Сообщение об успешном изменении пароля
     path(
         'password_change/done/',
-        views.PasswordChangeDoneView.as_view(),
+        views.PasswordChangeDoneView.as_view(
+            template_name='users/pages/password_change_done.html'
+        ),
         name='password_change_done'
     ),
 
@@ -60,7 +62,9 @@ urlpatterns = [
     # Сообщение об успешном восстановлении пароля
     path(
         'reset/done/',
-        views.PasswordResetCompleteView.as_view(),
+        views.PasswordResetCompleteView.as_view(
+            template_name='users/pages/password_reset_done.html'
+        ),
         name='password_reset_complete'
     ),
 ]
