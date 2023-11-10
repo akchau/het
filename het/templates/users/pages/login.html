@@ -1,6 +1,16 @@
-
-<form method="post" action="{% url 'users:login' %}">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Отправить</button>
-</form>
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style_login.css'%}">
+  <div class="body">
+    <div class="loginbox">
+      <img src="{% static 'imgs/verified-account_4847851.svg' %}" class="verified-account">
+        <h1>Авторизируйтесь</h1>
+          <form method="post" >
+            <input type="text" action="{% url 'users:login' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+              <input type="submit" name="" value="Войти">
+              <a href="#">Забыли пароль?</a>
+              <a href="#">Еще не зарегистрированы?</a>
+          </form>
+    </div>
+  </div>
