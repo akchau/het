@@ -1,46 +1,55 @@
-{% extends 'base.html' %}
+{% extends 'base_content_with_menu.html' %}
 {% load static %}
-
-{% block list %}
-<link rel="stylesheet" href="{% static 'css/account.css'%}">
-<div class="row">
-  <div class="col-4">
-    <div class="list-group" id="list-tab" role="tablist">
-      <a class="list-group-item list-group-item-action" id="personal_data" data-toggle="list" href="{% url 'users:account' %}?current_section=base_data" role="tab" aria-controls="base_data">Основные данные</a>
-      <a class="list-group-item list-group-item-action" id="personal_data" data-toggle="list" href="{% url 'users:account' %}?current_section=personal_data" role="tab" aria-controls="personal_data">Изменить личные данные</a>
-      <a class="list-group-item list-group-item-action" id="email" data-toggle="list" href="{% url 'users:account' %}?current_section=email" role="tab" aria-controls="email">Изменить email</a>
-      <a class="list-group-item list-group-item-action" id="change_password" data-toggle="list" href="{% url 'users:account' %}?current_section=change_password" role="tab" aria-controls="change_password">Изменить пароль</a>
-      <a class="list-group-item list-group-item-action" id="dropping_password" data-toggle="list" href="{% url 'users:account' %}?current_section=dropping_password" role="tab" aria-controls="dropping_password">Сброс пароля</a>
-  </div>
-</div>
-    
-    
-    {% if current_section %}
-    <div class="col-8">
-      <div class="tab-content" id="nav-tabContent">
-        <div class="tab-pane fade show active" id="base_data" role="tabpanel" aria-labelledby="base_data-list">
-          {% if current_section == "base_data" %}
-          {% include 'users/components/accounts/base_data.html' %} 
-        </div>
-        <div class="tab-pane fade show active" id="personal_data" role="tabpanel" aria-labelledby="personal_data-list">
-          {% if current_section == "personal_data" %}
-          {% include 'users/components/accounts/personal_data.html' %} 
-        </div>
-        <div class="tab-pane fade show" id="email" role="tabpanel" aria-labelledby="email-list">
-          {% elif current_section == "email" %}
-          {% include 'users/components/accounts/email.html' %}
-        </div>
-        <div class="tab-pane fade show" id="change_password" role="tabpanel" aria-labelledby="change_password-list">
-          {% elif current_section == "change_password" %}
-          {% include 'users/components/accounts/change_password.html' %}
-        </div>
-        <div class="tab-pane fade show" id="dropping_password" role="tabpanel" aria-labelledby="dropping_password-list">
-          {% elif current_section == "dropping_password" %}
-          {% include 'users/components/accounts/dropping_password.html' %}
-        </div>
+{% block menu %}
+  <div class="container">
+    <div class="list-group">
+      {% if current_section == "personal_data" %}
+        <a class="list-group-item list-group-item-action list-group-item-dark active" href="{% url 'users:account' %}?current_section=personal_data">Изменить личную информацию</a>
+      {% else %}
+        <a class="list-group-item list-group-item-action list-group-item-light" href="{% url 'users:account' %}?current_section=personal_data">Изменить личные данные</a>
       {% endif %}
-      </div>
+      {% if current_section == "email" %}
+      <a class="list-group-item list-group-item-action list-group-item-dark active" href="{% url 'users:account' %}?current_section=email">Изменить email</a>
+      {% else %}
+        <a class="list-group-item list-group-item-action list-group-item-light" href="{% url 'users:account' %}?current_section=email">Изменить email</a>
+      {% endif %}
+      {% if current_section == "change_password" %}
+        <a class="list-group-item list-group-item-action list-group-item-dark active" href="{% url 'users:account' %}?current_section=change_password">Изменить пароль</a>
+      {% else %}
+        <a class="list-group-item list-group-item-action list-group-item-light" href="{% url 'users:account' %}?current_section=change_password">Изменить пароль</a>
+      {% endif %}
+      {% if current_section == "dropping_password" %}
+        <a class="list-group-item list-group-item-action list-group-item-dark active" href="{% url 'users:account' %}?current_section=dropping_password">Сбросить пароль</a>
+      {% else %}
+        <a class="list-group-item list-group-item-action list-group-item-light" href="{% url 'users:account' %}?current_section=dropping_password">Сбросить пароль</a>
+      {% endif %}
     </div>
+  </div>
+{% endblock %}
+{% block content %}
+  <div class="container">
+    <link rel="stylesheet" href="{% static 'css/account.css'%}">
+    {% if current_section %}
+      <!-- <div class="tab-content" id="nav-tabContent"> -->
+        {% if current_section == "personal_data" %}
+          <!-- <div class="tab-pane fade show active" id="personal_data" role="tabpanel" aria-labelledby="personal_data-list"> -->
+            {% include 'users/components/accounts/personal_data.html' %} 
+          <!-- </div> -->
+        {% elif current_section == "email" %}
+          <!-- <div class="tab-pane fade show" id="email" role="tabpanel" aria-labelledby="email-list"> -->
+            {% include 'users/components/accounts/email.html' %}
+          <!-- </div> -->
+        {% elif current_section == "change_password" %}
+          <!-- <div class="tab-pane fade show" id="change_password" role="tabpanel" aria-labelledby="change_password-list"> -->
+            {% include 'users/components/accounts/change_password.html' %}
+          <!-- </div> -->
+        {% elif current_section == "dropping_password" %}
+          <!-- <div class="tab-pane fade show" id="dropping_password" role="tabpanel" aria-labelledby="dropping_password-list"> -->
+            {% include 'users/components/accounts/dropping_password.html' %}
+          <!-- </div> -->
+        {% endif %}
+      <!-- </div> -->
     {% endif %}
+  </div>
 {% endblock %}
             
