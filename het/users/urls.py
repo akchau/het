@@ -14,22 +14,27 @@ urlpatterns = [
     ),
 
     # Выход
-    path('logout/', views.LogoutView.as_view(
-        template_name='users/pages/logout.html'),
+    path(
+        'logout/',
+        views.LogoutView.as_view(
+            template_name='users/pages/logout.html'),
         name='logout'
     ),
 
     # Смена пароля
     path(
         'password_change/',
-        views.PasswordChangeView.as_view(),
+        views.PasswordChangeView.as_view(
+            template_name='users/pages/password_change.html'),
         name='password_change'
     ),
 
     # Сообщение об успешном изменении пароля
     path(
         'password_change/done/',
-        views.PasswordChangeDoneView.as_view(),
+        views.PasswordChangeDoneView.as_view(
+            template_name='users/pages/password_change_done.html'
+        ),
         name='password_change_done'
     ),
 
@@ -57,7 +62,9 @@ urlpatterns = [
     # Сообщение об успешном восстановлении пароля
     path(
         'reset/done/',
-        views.PasswordResetCompleteView.as_view(),
+        views.PasswordResetCompleteView.as_view(
+            template_name='users/pages/password_reset_done.html'
+        ),
         name='password_reset_complete'
     ),
 ]
