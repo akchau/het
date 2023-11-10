@@ -5,7 +5,16 @@
 <link rel="stylesheet" href="{% static 'css/account.css'%}">
 <div class="container rounded bg-white mt-5 mb-5">
   <div class="row">
-    <div class="col-md-3 border-right">
+    {% if current_section=="personal_data" %}
+    {% include 'users/components/accounts/personal_data.html' %} 
+    {% elif current_section=="email" %}
+    {% include 'users/components/accounts/email.html' %}
+    {% elif current_section=="change_password" %}
+    {% include 'users/components/accounts/change_password.html' %}
+    {% elif current_section=="dropping_password" %}
+    {% include 'users/components/accounts/dropping_password.html' %}
+    {% endif %}
+    <!-- <div class="col-md-3 border-right">
       <div class="d-flex flex-column align-items-center text-center p-3 py-5">
         <img class="rounded-circle mt-5" width="150px" src="{% static 'imgs/user_4847972.png'%}">
         <span class="font-weight-bold">{{user.username}}</span>
@@ -39,6 +48,6 @@
         </div>
       </div>
   </div>
-</div>
+</div> -->
 {% endblock %}
             
