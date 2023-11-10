@@ -3,8 +3,7 @@
 
 {% block list %}
 <link rel="stylesheet" href="{% static 'css/account.css'%}">
-<div class="container rounded bg-white mt-5 mb-5">
-  <div class="row">
+<div class="col-md-4"
     <nav class="navbar bg-body-tertiary">
       <div class="container-fluid">
         <a class="navbar-brand" href="{% url 'users:account' %}?current_section=personal_data">Изменить личные данные</a>
@@ -19,7 +18,9 @@
         <a class="navbar-brand" href="{% url 'users:account' %}?current_section=dropping_password">Сброс пароля</a>
       </div>
     </nav>
+    
     {% if current_section %}
+    <div class="col-md-8">
       {% if current_section == "personal_data" %}
         {% include 'users/components/accounts/personal_data.html' %} 
       {% elif current_section == "email" %}
@@ -29,6 +30,7 @@
       {% elif current_section == "dropping_password" %}
         {% include 'users/components/accounts/dropping_password.html' %}
       {% endif %}
+    </div>
     {% endif %}
     
     <!-- <div class="col-md-3 border-right">
