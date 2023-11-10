@@ -1,0 +1,4 @@
+.container {
+    display: flexbox;
+    justify-content: center;
+}
