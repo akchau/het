@@ -3,83 +3,36 @@
 
 {% block list %}
 <link rel="stylesheet" href="{% static 'css/style_account.css'%}">
-<div class="container">
-  <div class="row profile">
-    <div class="col-md-3">
-      <div class="profile-sidebar">
-
-              <div class="profile-userpic">
-                <img src="{% static 'imgs/user_4847972.png'%}" class="img-responsive" alt="user cap">
-            </div>
-
-            <div class="profile-usertitle">
-                <div class="profile-usertitle-name"> 
-                    ник пользователя
-                </div>
-                <div class="profile-usertitle-status">
-                    статус пользователя
-                </div>
-            </div>
-            <div class="profile-userbuttons">
-                <button type="submit" class="btn btn-success btn-sm">Добавить</button>
-                <button type="submit" class="btn btn-danger btn-sm">Сообщение</button>
-            </div>
-
-            <div class="profile-usermenu">
-                <ul class="nav">
-                    <li class="active">
-                        <a href="#">
-                        <i class="glyphicon glyphicon-home"></i>
-                        Просмотр страницы </a>
-                    </li>
-                    <li>
-                        <a href="№">
-                        <i class="glyphicon glyphicon-user"></i>
-                        Настройки аккаунта </a>
-                    </li>
-                    <li>
-                        <a href="#" target="_blank">
-                        <i class="glyphicon glyphicon-ok"></i>
-                        Бюджеты </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                        <i class="glyphicon glyphicon-flag"></i>
-                        Помощь </a>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="portlet light bordered">
-                <div class="row list-separated profile-stat">
-                    <div class="col-md-4 col-sm-4 col-xs-6">
-                        <div class="uppercase profile-stat-title"> кол-во бюджетов </div>
-                        <div class="uppercase profile-stat-text"> Бюджеты </div>
-                    </div>
-                    <div class="col-md-4 col-sm-4 col-xs-6">
-                        <div class="uppercase profile-stat-title"> кол-во добавленных</div>
-                        <div class="uppercase profile-stat-text"> Добавленные </div>
-                    </div>
-                </div>
-            </div>
-
-            <div>
-                <h5 class="profile-desc-title">информация о пользователе</h5>
-                <span class="profile-desc-text">информация </span>
-                <div class="margin-top-20 profile-desc-link">
-                    <i class="fa fa-globe"></i>
-                    <a href="#">email</a>
-                </div>
-            </div>
-
-            <div class="col-md-9">
-              <div class="profile-content">
-              дополнительная информация
-              </div>
-            </div>
-             
-      </div>
+<div class="container rounded bg-white mt-5 mb-5">
+  <div class="row">
+    <div class="col-md-3 border-right">
+      <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="{% static 'imgs/user_4847972.png'%}"><span class="font-weight-bold">ник</span><span class="text-black-50">эл.почта</span><span> </span></div>
     </div>
+      <div class="col-md-5 border-right">
+        <div class="p-3 py-5">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h4 class="text-right">Изменить профиль</h4>
+            </div> 
+            <div class="row mt-2">
+                <div class="col-md-6"><label class="labels">Имя</label><input type="text" class="form-control" placeholder="" value=""></div>
+                <div class="col-md-6"><label class="labels">Фамилия</label><input type="text" class="form-control" value="" placeholder=""></div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-md-12"><label for="exampleFormControlSelect1" class="labels">Статус пользователя</label>
+                    <select class="form-control" id="exampleFormControlSelect1">
+                        <option>папка</option>
+                        <option>мамка</option>
+                        <option>песдюк1</option>
+                        <option>песдюк2</option>
+                        <option>бабуля</option>
+                    </select>
+                </div>
+                <div class="col-md-12"><label class="labels">Почта</label><input type="text" class="form-control" placeholder="" value=""></div>
+                <div class="col-md-12"><label class="labels">О себе</label><input type="text" class="form-control" placeholder="" value=""></div>
+            </div>
+            <div class="mt-5 text-center"><button class="btn btn-outline-info" type="submit">Сохранить</button></div>
+        </div>
+      </div>
   </div>
 </div>
 {% endblock %}
