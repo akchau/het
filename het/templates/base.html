@@ -10,19 +10,17 @@
         <div class="row">    
           {% include 'core/page_header.html' %}
         </div>
-          <div class="container text-center">
+          <div class="container">
             <div class="row">
               <div class="col-8">
-              {% block list %}
-              {% endblock %}
-              </div>
-            </div>
-              <div class="row">
-                <div class="col-4">
-                {% block form %}
+                {% block list %}
                 {% endblock %}
+              </div>
+                <div class="col-4">
+                  {% block form %}
+                  {% endblock %}
                 </div>
-              </div> 
+            </div>
          </div>
     </main> 
     <footer>
