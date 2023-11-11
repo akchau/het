@@ -1,5 +1,17 @@
 {% extends 'base_content_with_menu.html' %}
 {% load static %}
+{% block info_header %}
+  Основная инфомация
+{% endblock %}
+{% block info %}
+  {{ request.user.first_name }}
+  {{ request.user.last_name }}
+  {{ request.user.username }}
+  {{ request.user.email }}
+{% endblock %}
+{% block menu_header %}
+  Основное меню
+{% endblock %}
 {% block menu %}
   <div class="container">
     <div class="list-group">
@@ -25,6 +37,9 @@
       {% endif %}
     </div>
   </div>
+{% endblock %}
+{% block form_header %}
+  {{ form_header }}
 {% endblock %}
 {% block content %}
   <div class="container">
