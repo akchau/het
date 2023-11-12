@@ -1,45 +1,55 @@
 {% extends 'base_content_with_menu.html' %}
 {% load static %}
 {% block info_header %}
+<div class="container">
   Основная инфомация
+</div>
 {% endblock %}
 {% block info %}
+<div class="container">
   {{ request.user.first_name }}
   {{ request.user.last_name }}
   {{ request.user.username }}
   {{ request.user.email }}
+</div>
 {% endblock %}
 {% block menu_header %}
+<div class="container">
+  <div class="row">
   Основное меню
+  </div>
+</div>
 {% endblock %}
 {% block menu %}
-  <div class="container">
-    <div class="list-group">
-      {% if current_section == "personal_data" %}
-        <a class="list-group-item list-group-item-action list-group-item-dark active" href="{% url 'users:account' %}?current_section=personal_data">Изменить личную информацию</a>
-      {% else %}
-        <a class="list-group-item list-group-item-action list-group-item-light" href="{% url 'users:account' %}?current_section=personal_data">Изменить личные данные</a>
-      {% endif %}
-      {% if current_section == "email" %}
-      <a class="list-group-item list-group-item-action list-group-item-dark active" href="{% url 'users:account' %}?current_section=email">Изменить email</a>
-      {% else %}
-        <a class="list-group-item list-group-item-action list-group-item-light" href="{% url 'users:account' %}?current_section=email">Изменить email</a>
-      {% endif %}
-      {% if current_section == "change_password" %}
-        <a class="list-group-item list-group-item-action list-group-item-dark active" href="{% url 'users:account' %}?current_section=change_password">Изменить пароль</a>
-      {% else %}
-        <a class="list-group-item list-group-item-action list-group-item-light" href="{% url 'users:account' %}?current_section=change_password">Изменить пароль</a>
-      {% endif %}
-      {% if current_section == "dropping_password" %}
-        <a class="list-group-item list-group-item-action list-group-item-dark active" href="{% url 'users:account' %}?current_section=dropping_password">Сбросить пароль</a>
-      {% else %}
-        <a class="list-group-item list-group-item-action list-group-item-light" href="{% url 'users:account' %}?current_section=dropping_password">Сбросить пароль</a>
-      {% endif %}
-    </div>
+  <div class="container-fluid">
+     <div class="list-group">
+        {% if current_section == "personal_data" %}
+          <a class="list-group-item list-group-item-action list-group-item-dark active" href="{% url 'users:account' %}?current_section=personal_data">Изменить личную информацию</a>
+        {% else %}
+          <a class="list-group-item list-group-item-action list-group-item-light" href="{% url 'users:account' %}?current_section=personal_data">Изменить личные данные</a>
+        {% endif %}
+        {% if current_section == "email" %}
+          <a class="list-group-item list-group-item-action list-group-item-dark active" href="{% url 'users:account' %}?current_section=email">Изменить email</a>
+        {% else %}
+          <a class="list-group-item list-group-item-action list-group-item-light" href="{% url 'users:account' %}?current_section=email">Изменить email</a>
+        {% endif %}
+        {% if current_section == "change_password" %}
+          <a class="list-group-item list-group-item-action list-group-item-dark active" href="{% url 'users:account' %}?current_section=change_password">Изменить пароль</a>
+        {% else %}
+          <a class="list-group-item list-group-item-action list-group-item-light" href="{% url 'users:account' %}?current_section=change_password">Изменить пароль</a>
+        {% endif %}
+        {% if current_section == "dropping_password" %}
+          <a class="list-group-item list-group-item-action list-group-item-dark active" href="{% url 'users:account' %}?current_section=dropping_password">Сбросить пароль</a>
+        {% else %}
+          <a class="list-group-item list-group-item-action list-group-item-light" href="{% url 'users:account' %}?current_section=dropping_password">Сбросить пароль</a>
+        {% endif %}
+     </div>
   </div>
 {% endblock %}
 {% block form_header %}
+<div class="container">
   {{ form_header }}
+</div>
 {% endblock %}
 {% block content %}
   <div class="container">
