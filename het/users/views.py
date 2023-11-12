@@ -24,24 +24,29 @@ def account(request):
     template = 'users/pages/account.html'
     current_section = request.GET.get('current_section', None)
     form = None
+    form_header = None
     if current_section == AccountFnction.PERSONAL_DATA:
         form = UserInfoChangeForm(
             None,
             instance=request.user
         )
+        form_header = "Изменение основых данных профиля"
     elif current_section == AccountFnction.EMAIL:
         form = EmailChangeForm(
             None,
             instance=request.user
         )
+        form_header = "Изменение email"
     elif current_section == AccountFnction.CHANGE_PASSWORD:
         form = PasswordChangeForm(
             None,
         )
+        form_header = "Смена пароля"
     elif current_section == AccountFnction.DROPPING_PASSWORD:
         form = PasswordResetForm(
             None
         )
+        form_header = "Сброс пароля"
     context = {
         "user_pk": request.user.pk,
         "username": request.user.username,
@@ -49,5 +54,6 @@ def account(request):
         "header": request.user.username,
         "current_section": current_section,
         "form": form,
+        "form_header": form_header
     }
     return render(request, template, context)
