@@ -5,3 +5,17 @@
     padding-top: 0px;
     padding-bottom: 0px;
 }
+.button input[type="submit"] {
+    border: none;
+    outline: none;
+    height: 40px;
+    background: #4a4040;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 10px;
+}
+.button input[type="submit"]:hover{
+    cursor: pointer;
+    background-color: #92cfd4;
+    color: #000;
+}
