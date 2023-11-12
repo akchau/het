@@ -9,11 +9,33 @@
       <div class="container" style="margin-top: 70px;">
           <div class="row">
             <div class="col-4 p-3">
-              {% block menu %}
-              {% endblock %}
+              <div class="card">
+                <div class="card-header">
+                  {% block info_header %}
+                  {% endblock %}
+                </div>
+                <div class="card-body">
+                  {% block info %}
+                  {% endblock %}
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header">
+                  {% block menu_header %}
+                  {% endblock %}
+                </div>
+                <div class="card-body">
+                  {% block menu %}
+                  {% endblock %}
+                </div>
+              </div>
             </div>
             <div class="col-md-8 p-3">
               <div class="card">
+                <div class="card-header">
+                  {% block form_header %}
+                  {% endblock %}
+                </div>
                 <div class="card-body">
                   {% block content %}
                   {% endblock %}
