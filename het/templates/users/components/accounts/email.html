@@ -1,8 +1,14 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/personal_data.css'%}">
 <form>
     {% with form.email as field %}
-      <div class="form-group">
+    <div class="form-group row my-1 p-1">
+      <label class=" col-form-label">
         {{ field.label_tag }} {{ field }}
-      </div>
+      </label>
+    </div>
     {% endwith %}
-    <button type="submit" class="btn btn-outline-primary" >Сохранить</button>
+    <div class="button">
+      <input type="submit" name="" value="Сохранить">
+    </div>
 </form>
