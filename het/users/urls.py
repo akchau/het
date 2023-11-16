@@ -5,6 +5,7 @@ app_name = "users"
 
 urlpatterns = [
     path('account/', custom_view.account, name='account'),
+    path('edit/<int:pk>', custom_view.edit, name="edit"),
     path('signup/', custom_view.SignUp.as_view(), name='signup'),
     # Авторизация
     path(
