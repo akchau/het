@@ -1,5 +1,5 @@
 <header>
-  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar fixed-top navbar-expand-lg" style="background-color: rgb(175, 0, 230);"">
     <a></a>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
@@ -31,9 +31,9 @@
             href="{% url "users:account" %}">
             <span class="sr-only">{{user.username}}</span></a>
           </li>
-          <form class="form-inline mb-2 mb-ml-2">
-            <input class="form-control mb-ml-2" type="search" placeholder="Текущий баланс" aria-label="Текущий баланс">
-          </form>
+          <li class="nav-item">
+              <span class="sr-only">{{ my_balance }}</span>
+          </li>
         {% else %}
           <li class="nav-item">   
             <a class="nav-link" href="{% url "users:login" %}">Войти<span class="sr-only"></span></a>

@@ -3,26 +3,26 @@
   {% include 'core/head.html' %}
   <body>
     <div class="container">
-    {% include 'core/main_menu.html' %} 
+    <div class="container">
+      <div class="row">
+        {% include 'core/main_menu.html' %} 
+      </div
     </div>
     <main>
       <div class="container" style="margin-top: 70px;">
-        <div class="row">    
-          {% include 'core/page_header.html' %}
+        <div class="row">
+          <div class="col-8">
+            {% block list %}
+            {% endblock %}
+          </div>
+          <div class="col-4">
+            {% block form %}
+            {% endblock %}
+          </div>
         </div>
-          <div class="container">
-            <div class="row">
-              <div class="col-8">
-                {% block list %}
-                {% endblock %}
-              </div>
-                <div class="col-4">
-                  {% block form %}
-                  {% endblock %}
-                </div>
-            </div>
-         </div>
-    </main> 
+      </div>
+    </main>
+    </div>
     <footer>
       {% include 'core/footer.html' %} 
     </footer>
