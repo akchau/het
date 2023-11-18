@@ -1,29 +1,7 @@
-/* .main_container {
-    display: inline-block;
-    width: 100%;
-  }
-  .site_header {
-    width: 100%; 
-    background-color: #4a4040; 
-    height: 60px; 
-    display: flex;
-    align-items: center;
-    position: fixed; 
-    top: 0;   
-  }
-  .navigation_container {
-    height: 100%; 
-    display: flex;
-    align-items: center;
-    justify-content: space-between; 
-  }
-  .link {
-    font-weight: 400; 
-    font-size: 20px; 
-    line-height: 24px;
-    text-decoration: none;
-    color: #92cfd4; 
-  }
-  .logout-container {
-    margin-right: auto;
+/* .logo-right {
+  position: absolute;
+  right: 0;
+}
+.navbar {
+  position: relative;
 } */

@@ -1,53 +1,78 @@
+{% load static %}
 <header>
-  <nav class="navbar fixed-top navbar-expand-lg" style="background-color: rgb(175, 0, 230);"">
-    <a></a>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        {% if user.is_authenticated %}
-          <li class="nav-item">   
-            <a class="nav-link
-              {% if request.resolver_match.view_name  == "expenses:list" %}
-                active
-              {% endif %}"
-              href="{% url "expenses:list" %}">
-            <span class="sr-only">Расходы</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link
-            {% if request.resolver_match.view_name  == "expenses_categories:list" %}
-              active
-            {% endif %}"
-            href="{% url "expenses_categories:list" %}">
-            <span class="sr-only">Категории расходов</span></a>
-          </li>
-          <li class="nav-item">   
-            <a class="nav-link" href="{% url "users:logout" %}">Выйти<span class="sr-only"></span></a>
-          </li>
-          <li class="nav-item">   
-            <a class="nav-link
-            {% if request.resolver_match.view_name  == "users:account" %}
-              active
-            {% endif %}"
-            href="{% url "users:account" %}">
-            <span class="sr-only">{{user.username}}</span></a>
-          </li>
-          <li class="nav-item">
-              <span class="sr-only">{{ my_balance }}</span>
-          </li>
-        {% else %}
-          <li class="nav-item">   
-            <a class="nav-link" href="{% url "users:login" %}">Войти<span class="sr-only"></span></a>
-          </li>
-          <li class="nav-item">   
-            <a class="nav-link
-            {% if request.resolver_match.view_name  == "users:signup" %}
-              active
-            {% endif %}"
-            href="{% url "users:signup" %}">
-            <span class="sr-only">Регистрация</span></a>
-          </li>
-        {% endif %}
-      </ul>
-   </nav>
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark d-flex justify-content-between">
+      <div class="d-flex">
+        <img src="{% static 'imgs/logo 1.png'%}" class="navbar-brand">     
+            <div class="collapse navbar-collapse flex-grow-1" id="navbarNav">
+              <ul class="navbar-nav" class="navbar-nav mr-auto">
+               {% if user.is_authenticated %}
+                <li class="nav-item">   
+                  <a class="nav-link
+                    {% if request.resolver_match.view_name  == "expenses:list" %}
+                    active
+                    {% endif %}"
+                    href="{% url "expenses:list" %}">
+                    <span class="sr-only">Расходы</span>
+                  </a>
+               </li>
+               <li class="nav-item">
+                <a class="nav-link
+                 {% if request.resolver_match.view_name  == "expenses_categories:list" %}
+                  active
+                  {% endif %}"
+                  href="{% url "expenses_categories:list" %}">
+                 <span class="sr-only">Категории расходов</span></a>
+               </li>
+               <li class="nav-item">   
+                 <a class="nav-link
+                   {% if request.resolver_match.view_name  == "users:account" %}
+                   active
+                   {% endif %}"
+                   href="{% url "users:account" %}">
+                  <span class="sr-only">{{user.username}}</span></a>
+               </li>
+               <li class="nav-item">
+                <span class="sr-only">{{ my_balance }}</span>
+               </li>
+               {% else %}
+               <li class="nav-item">   
+                 <a class="nav-link" href="{% url "users:login" %}">Войти<span class="sr-only"></span></a>
+               </li>
+               <li class="nav-item">   
+                 <a class="nav-link
+                   {% if request.resolver_match.view_name  == "users:signup" %}
+                   active
+                   {% endif %}"
+                   href="{% url "users:signup" %}">
+                   <span class="sr-only">Регистрация</span></a>
+               </li>
+              {% endif %}
+             </ul>
+          </div>
+        </div>
+        <a class="nav-link ml-auto" href="{% url "users:logout" %}" class="navbar-brand logo-right">
+          <img src="{% static 'imgs/logout 1.png'%}" alt="Выйти">
+            <span class="sr-only"></span>
+        </a>
+  </nav>
 </header>
 <!--навигация-->
+<!-- <a class="nav-link" href="{% url "users:logout" %}">Выйти<span class="sr-only"></span></a> -->
+<!-- <a class="nav-link" href="{% url "users:logout" %}"><img src="URL_ВАШЕЙ_КАРТИНКИ" alt="Выйти"><span class="sr-only"></span></a> -->
+<!-- <header>
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+    <a href="#" class="navbar-brand">Logo</a>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        {% if user.is_authenticated %}
+           другие элементы меню -->
+          <!-- <li class="nav-item" >    -->
+            <!-- <a class="nav-link" href="{% url "users:logout" %}"><img src="URL_ВАШЕЙ_КАРТИНКИ" alt="Выйти"><span class="sr-only"></span></a> -->
+          <!-- </li> -->
+          <!-- другие элементы меню -->
+        <!-- {% else %} -->
+          <!-- элементы меню для неаутентифицированного пользователя -->
+        <!-- {% endif %} -->
+      <!-- </ul> -->
+   <!-- </nav> -->
+<!-- </header> --> 

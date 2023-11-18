@@ -40,7 +40,7 @@ class CardHeader(str, Enum):
 
 
 class FormHeader(str, Enum):
-    PERSONAL_DATA = "Изменение основых данных профиля"
+    PERSONAL_DATA = "Изменение основных данных профиля"
     EMAIL = "Изменение email"
     CHANGE_PASSWORD = "Смена пароля"
     DROPPING_PASSWORD = "Сброс пароля"
