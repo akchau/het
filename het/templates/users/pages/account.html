@@ -55,26 +55,7 @@
   <div class="container">
     <link rel="stylesheet" href="{% static 'css/account.css'%}">
     {% if current_section %}
-      <!-- <div class="tab-content" id="nav-tabContent"> -->
-        {% if current_section == "personal_data" %}
-          <!-- <div class="tab-pane fade show active" id="personal_data" role="tabpanel" aria-labelledby="personal_data-list"> -->
-            {% include 'users/components/accounts/personal_data.html' %} 
-          <!-- </div> -->
-        {% elif current_section == "email" %}
-          <!-- <div class="tab-pane fade show" id="email" role="tabpanel" aria-labelledby="email-list"> -->
-            {% include 'users/components/accounts/email.html' %}
-          <!-- </div> -->
-        {% elif current_section == "change_password" %}
-          <!-- <div class="tab-pane fade show" id="change_password" role="tabpanel" aria-labelledby="change_password-list"> -->
-            {% include 'users/components/accounts/change_password.html' %}
-          <!-- </div> -->
-        {% elif current_section == "dropping_password" %}
-          <!-- <div class="tab-pane fade show" id="dropping_password" role="tabpanel" aria-labelledby="dropping_password-list"> -->
-            {% include 'users/components/accounts/dropping_password.html' %}
-          <!-- </div> -->
-        {% endif %}
-      <!-- </div> -->
+      {% include template_component %} 
     {% endif %}
   </div>
 {% endblock %}
-            

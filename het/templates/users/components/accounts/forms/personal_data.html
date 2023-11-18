@@ -1,6 +1,6 @@
 {% load static %}
-<link rel="stylesheet" href="{% static 'css/personal_data.css'%}">
-<form>
+<link rel="stylesheet" href="{% static 'css/personal_data.css'%}"
+<form method="post" action="{% url 'users:edit' request.user.pk %}" enctype="multipart/form-data">{% csrf_token %}
   {% with form.first_name as field %}
     <div class="form-group row my-1 p-1">
       <label class="col-sm-2 col-form-label">
@@ -47,7 +47,7 @@
     </div>
   {% endwith %}
   <div class="button">
-    <input type="submit" name="" value="Сохранить">
+    <button type="submit" class="btn btn-dark btn-lg">Сохранить</button>
   </div>
 </form>
 </div>
