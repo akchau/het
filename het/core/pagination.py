@@ -1,5 +1,6 @@
 from django.core.paginator import Paginator
 
+
 def get_page_obj(request, models, num_in_page):
     """Получение списка с пагинацией"""
     paginator = Paginator(models, num_in_page)

@@ -169,6 +169,7 @@ class AcountConstructor(BaseConstructor):
 
 @login_required
 def account(request):
+    print(type(request))
     template = 'users/pages/account.html'
     current_section = request.GET.get('current_section', None)
     CONSTRUCTOR = AcountConstructor(

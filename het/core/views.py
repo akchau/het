@@ -1,23 +1,47 @@
 from urllib.parse import urlencode
 from django import forms
+from django.core.handlers.wsgi import WSGIRequest
 from django.db import models
 from django.db.models import Sum
+from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 from core.pagination import get_page_obj
 from expenses.models import Expense
-from expenses.categories.models import ExpenseCategory
+from het.settings import TEMPLATES_DIR
+
+def check_template_exits(base_dir=TEMPLATES_DIR):
 
 
-def listing_with_creating(request, template: str,
-                          model: models.Model, form_class: forms.ModelForm,
-                          context: dict, edit_form_class: forms.ModelForm,
-                          category_filter_form_class: forms.ModelForm):
+
+def listing_with_creating(
+        request: WSGIRequest,
+        template: str,
+        model: models.Model,
+        form_class: forms.ModelForm,
+        context: dict,
+        edit_form_class: forms.ModelForm,
+        category_filter_form_class: forms.ModelForm
+     ) -> HttpResponse:
     """
-    Базовая вью-функция для отображения сущности с
-    формой добавления и пагинатором
+        Базовая вью-функция для отображения сущности с
+    формой добавления и пагинатором и редактированием.
+    Подходит для отображения списка объектов.
+
+    Args:
+        request (WSGIRequest): Полученные запрос.
+        template (str): Относительный путь шаблона.
+        model (models.Model): _description_
+        form_class (forms.ModelForm): _description_
+        context (dict): _description_
+        edit_form_class (forms.ModelForm): _description_
+        category_filter_form_class (forms.ModelForm): _description_
+
+    Returns:
+        HttpResponse: _description_
     """
-    my_balance = Expense.objects.filter(user=request.user).aggregate(Sum('sum_of_expense'))['sum_of_expense__sum']
+    my_balance = Expense.objects.filter(user=request.user).aggregate(
+        Sum('sum_of_expense'))['sum_of_expense__sum']
     if my_balance is None:
         my_balance = 0
     if context.get("filter_category") is not None:
@@ -72,7 +96,7 @@ def listing_with_creating(request, template: str,
 
 
 def add_with_set_user(request, form_class: forms.ModelForm):
-    """Создание сущности."""
+    """Создание сущности c добавлением автора к сущности."""
     form = form_class(request.POST, user=request.user)
     if form.is_valid():
         new_object = form.save(commit=False)
@@ -82,13 +106,36 @@ def add_with_set_user(request, form_class: forms.ModelForm):
     raise ValueError('Невалидная форма')
 
 
-def detete_obj(request, pk, model, redirect_name):
+def detete_obj(request, pk: int, model, redirect_name):
+    """
+    Удаление сущности.
+
+    Args:
+        request (_type_): _description_
+        pk (_type_): _description_
+        model (_type_): _description_
+        redirect_name (_type_): _description_
+
+    Returns:
+        _type_: _description_
+    """
     if model.objects.filter(pk=pk, user=request.user.pk).exists():
         model.objects.filter(pk=pk, user=request.user.pk).delete()
     return redirect(redirect_name)
 
 
 def edit_obj(request, pk: int, form_class: forms.ModelForm):
+    """
+    Базовый класс изменения объекта
+
+    Args:
+        request (_type_): _description_
+        pk (int): _description_
+        form_class (forms.ModelForm): _description_
+
+    Returns:
+        _type_: _description_
+    """
     edit_model = form_class.Meta.model
     object_instance = get_object_or_404(edit_model, pk=pk)
     form = form_class(
